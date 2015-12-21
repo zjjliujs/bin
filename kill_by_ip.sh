@@ -14,5 +14,5 @@ ttys=$(who|grep -e "${ip_part})"|awk '{print $2}')
 
 for tty in ${ttys}
 do
-  ps aux|grep "@${tty}"|grep -v grep|awk '{print $2}'|xargs kill
+  ps aux|grep "@${tty}$"|grep -v grep|awk '{print $2}'|xargs kill
 done
