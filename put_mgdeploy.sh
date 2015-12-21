@@ -1,7 +1,7 @@
 #!/bin/bash
 
 src=/cygdrive/e/mg_workspace/mg_deploy
-dst=magneto@192.168.40.36:/home/magneto/dev-magneto
+dst=magneto@192.168.40.92:/home/magneto/dev-magneto
 
 scp  ${src}/src/mgdeploy/*.java ${dst}/src/mgdeploy
 scp  ${src}/src/mgdeploy/exception/*.java ${dst}/src/mgdeploy/exception
