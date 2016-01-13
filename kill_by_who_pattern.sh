@@ -1,13 +1,13 @@
 #!/bin/bash
 if [ $# -ne 1 ]
 then
-  echo "usage: kill_by_ip <partial-ip>"
+  echo "usage: kill_by_ip <who-out-pattern>"
   exit 1
 fi
 
-ip_part=$1
+pattern=$1
 
-ttys=$(who|grep -e "${ip_part})"|awk '{print $2}')
+ttys=$(who|grep -e "${pattern}"|awk '{print $2}')
 
 #echo $ttys
 #exit 1
