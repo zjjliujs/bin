@@ -7,19 +7,24 @@ then
 fi
 
 ttys=$(who|awk '{print $2}')
-#echo $ttys
+echo $ttys
+echo =====================
 
 ttyMe=$(who am i|awk '{print $2}')
+echo $ttyMe
+echo =====================
 
 declare -a ttyOthers
 for i in $ttys
 do
+    echo ${#ttyOthers[@]}
     if [ "$i" != "$ttyMe" ]
     then 
-        ttyOthers[${#ttyOthers}]=$i
+        ttyOthers[${#ttyOthers[@]}]=$i
     fi
 done
-#echo ${ttyOthers[@]}
+echo ${ttyOthers[@]}
+echo =====================
 #exit
 
 for tty in ${ttyOthers[@]}
