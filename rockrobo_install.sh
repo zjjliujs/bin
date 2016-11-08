@@ -9,10 +9,10 @@ fi
 version="$2"
 model="$1"
 
-destdir="/cygdrive/c/work/apk/rr-${model}"
+destdir="c:\\work\\apk\\rr-${model}"
 filename="rockrobo_vacuum-${version}-0.1.${version}-release.apk"
 
-fullpath="${destdir}/${filename}"
+fullpath="${destdir}\\${filename}"
 
 #stop smart home
 adb shell am force-stop com.xiaomi.smarthome
