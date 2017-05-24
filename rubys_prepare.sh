@@ -15,13 +15,13 @@ modelNames[2]="rockrobo.sweeper.s5v3"
 case ${model} in 
 	"v1")
 		modelName=${modelNames[0]}
-		applicationId="com.rockrobo.app";;
+		applicationId="com.rockrobo.rubys_v1";;
 	"v2")
 		modelName=${modelNames[1]}
-		applicationId="com.rockrobo_test.app";;
+		applicationId="com.rockrobo.rubys_v2";;
 	"v3")
 		modelName=${modelNames[2]}
-		applicationId="com.rockrobo_innertest.app";;
+		applicationId="com.rockrobo.rubys_v3";;
 	*) 
 		echo "错误的model -- ${model}";
 		exit 11;;
