@@ -8,9 +8,9 @@ fi
 model="$1"
 version="$2"
 
-modelNames[0]="rockrobo.vacuum.s5"
-modelNames[1]="rockrobo.sweeper.s5v2"
-modelNames[2]="rockrobo.sweeper.s5v3"
+modelNames[0]="rockrobo.vacuum.v1"
+modelNames[1]="rockrobo.sweeper.v2"
+modelNames[2]="rockrobo.sweeper.v1"
 
 case ${model} in 
 	"v1")
