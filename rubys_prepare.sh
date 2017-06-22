@@ -15,13 +15,13 @@ modelNames[2]="rockrobo.sweeper.s5v3"
 case ${model} in 
 	"v1")
 		modelName=${modelNames[0]}
-		applicationId="com.rockrobo.rubys_v1";;
+		applicationId="com.rockrobo.rubys.android";;
 	"v2")
 		modelName=${modelNames[1]}
-		applicationId="com.rockrobo.rubys_v2";;
+		applicationId="com.rockrobo.rubys.android_test";;
 	"v3")
 		modelName=${modelNames[2]}
-		applicationId="com.rockrobo.rubys_v3";;
+		applicationId="com.rockrobo.rubys.android_inner_test";;
 	*) 
 		echo "错误的model -- ${model}";
 		exit 11;;
@@ -119,7 +119,7 @@ fi
 c=$(sed -n "/^[ \t]*android:name[ \t]*=[ \t]*\"model\"/p" "$p"|wc -l)
 if [ $c -ne 1 ]
 then
-	echo "没有找到android:name=\"model\"的行"
+	echo "没有找到android:name=\"model\"的行或者不止一行，请检查！"
 	exit 42
 fi
 
