@@ -8,20 +8,20 @@ fi
 model="$1"
 version="$2"
 
-modelNames[0]="rockrobo.vacuum.s5"
-modelNames[1]="rockrobo.sweeper.s5v2"
-modelNames[2]="rockrobo.sweeper.s5v3"
+modelNames[0]="roborock.vacuum.s5"
+modelNames[1]="roborock.sweeper.s5v2"
+modelNames[2]="roborock.sweeper.s5v3"
 
 case ${model} in 
 	"v1")
 		modelName=${modelNames[0]}
-		applicationId="com.rockrobo.rubys.android";;
+		applicationId="com.roborock.rubys.android";;
 	"v2")
 		modelName=${modelNames[1]}
-		applicationId="com.rockrobo.rubys.android_test";;
+		applicationId="com.roborock.rubys.android_test";;
 	"v3")
 		modelName=${modelNames[2]}
-		applicationId="com.rockrobo.rubys.android_inner_test";;
+		applicationId="com.roborock.rubys.android_inner_test";;
 	*) 
 		echo "错误的model -- ${model}";
 		exit 11;;
@@ -73,10 +73,10 @@ then
 fi
 
 #检查文件的合法性
-c=$(sed -n '/^[ \t]*applicationId[ \t]\+\"com\.rockrobo.*\"/p' "$p"|wc -l)
+c=$(sed -n '/^[ \t]*applicationId[ \t]\+\"com\.roborock.*\"/p' "$p"|wc -l)
 if [ $c -ne 1 ]
 then
-	echo "$p 应该有一行applicationID \"com.rocorobo...\",但是没有找到或者找到不止一行！"
+	echo "$p 应该有一行applicationID \"com.roborock...\",但是没有找到或者找到不止一行！"
 	exit 32
 fi
 
@@ -95,8 +95,8 @@ then
 fi
 
 #修改applicationId
-#sed "s/\(^[ \t]*applicationId[ \t]\+\)\"com\.rockrobo.*\"/\1 \"${applicationId}\"/" "$p" |grep applicationId
-sed -i "s/\(^[ \t]*applicationId[ \t]\+\)\"com\.rockrobo.*\"/\1\"${applicationId}\"/" "$p" 
+#sed "s/\(^[ \t]*applicationId[ \t]\+\)\"com\.roborock.*\"/\1 \"${applicationId}\"/" "$p" |grep applicationId
+sed -i "s/\(^[ \t]*applicationId[ \t]\+\)\"com\.roborock.*\"/\1\"${applicationId}\"/" "$p" 
 
 #修改versionCode
 #sed "s/\(^[ \t]*versionCode[ \t]\+\)[0-9]\+/\1${version}/" "$p"|grep versionCode
