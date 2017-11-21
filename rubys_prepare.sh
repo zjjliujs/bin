@@ -15,12 +15,15 @@ modelNames[2]="roborock.sweeper.s5v3"
 case ${model} in 
 	"v1")
 		modelName=${modelNames[0]}
+		modelValue="Constants.MODEL_V1"
 		applicationId="com.roborock.rubys.android";;
 	"v2")
 		modelName=${modelNames[1]}
+		modelValue="Constants.MODEL_V2"
 		applicationId="com.roborock.rubys.android_test";;
 	"v3")
 		modelName=${modelNames[2]}
+		modelValue="Constants.MODEL_V3"
 		applicationId="com.roborock.rubys.android_inner_test";;
 	*) 
 		echo "错误的model -- ${model}";
@@ -48,7 +51,7 @@ then
 	exit 21
 fi
 
-c=$(sed -n '/^\/\/[ \t]\+public[ \t]\+static[ \t]\+final[ \t]\+String[ \t]\+MODEL[ \t]*=[ \t]*/p' "$p"|wc -l)
+c=$(sed -n '/^[ \t]\+\/\/[ \t]*public[ \t]\+static[ \t]\+final[ \t]\+String[ \t]\+MODEL[ \t]*=[ \t]*/p' "$p"|wc -l)
 if [ $c -ne 2 ]
 then
 	echo "Device.java中注释掉的MODEL定义应该有两行，但是实际找到$c行，请检查！"
@@ -56,10 +59,10 @@ then
 fi
 
 #注释掉所有MODEL定义
-sed -i 's/^[ \t]\+public[ \t]\+static[ \t]\+final[ \t]\+String[ \t]\+MODEL[ \t]*=[ \t]*/\/\/&/' "$p"
+sed -i 's/\(^[ \t]\+\)\(public[ \t]\+static[ \t]\+final[ \t]\+String[ \t]\+MODEL[ \t]*=[ \t]*\)/\1\/\/\2/' "$p"
 
 #打开对应model的MODEL定义
-sed -i "s/^\/\/\([ \t]\+public[ \t]\+static[ \t]\+final[ \t]\+String[ \t]\+MODEL[ \t]*=[ \t]*\"${modelName}\"\)/\1/" "$p"
+sed -i "s/^\([ \t]\+\)\/\/[ \t]*\(public[ \t]\+static[ \t]\+final[ \t]\+String[ \t]\+MODEL[ \t]*=[ \t]*${modelValue}\)/\1\2/" "$p"
 
 
 #处理./plugProject/rockrobo_vacuum/build.gradle
