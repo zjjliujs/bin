@@ -16,7 +16,7 @@ case ${model} in
 	"v1")
 		modelName=${modelNames[0]}
 		modelValue="Constants.MODEL_V1"
-		applicationId="com.roborock.rubys.android";;
+		applicationId="com.roborock.rubys.app";;
 	"v2")
 		modelName=${modelNames[1]}
 		modelValue="Constants.MODEL_V2"
