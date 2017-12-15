@@ -1,30 +1,30 @@
 #!/bin/bash
 if [ $# -lt 2 ] 
 then
-	echo "ruby_prepare.sh <v1|v2|v3> <versionCode>"
+	echo "sapphire_c_prepare.sh <v1|v2|v3> <versionCode>"
 	exit 10
 fi
 
 model="$1"
 version="$2"
 
-modelNames[0]="rockrobo.vacuum.v1"
-modelNames[1]="rockrobo.sweeper.v2"
-modelNames[2]="rockrobo.sweeper.v1"
+modelNames[0]="roborock.vacuum.c1"
+modelNames[1]="roborock.sweeper.c1v2"
+modelNames[2]="roborock.sweeper.c1v3"
 
 case ${model} in 
 	"v1")
 		modelName=${modelNames[0]}
-		modelValue="Constants.RUBY_MODEL_V1"
-		applicationId="com.rockrobo.app";;
+		modelValue="Constants.MODEL_V1"
+		applicationId="com.rockrobo.saffire_c.android";;
 	"v2")
 		modelName=${modelNames[1]}
-		modelValue="Constants.RUBY_MODEL_V2"
-		applicationId="com.rockrobo_test.app";;
+		modelValue="Constants.MODEL_V2"
+		applicationId="com.rockrobo.saffire_c.android_innertest";;
 	"v3")
 		modelName=${modelNames[2]}
-		modelValue="Constants.RUBY_MODEL_V3"
-		applicationId="com.rockrobo_innertest.app";;
+		modelValue="Constants.MODEL_V3"
+		applicationId="com.rockrobo.saffire_c.android_test";;
 	*) 
 		echo "错误的model -- ${model}";
 		exit 11;;
