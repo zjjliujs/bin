@@ -12,7 +12,7 @@ model="$1"
 filename="rockrobo_vacuum-${version}-0.1.${version}-release.apk"
 
 srcdir="plugProject/rockrobo_vacuum/build/outputs/apk"
-destdir="/cygdrive/c/work/apk/sapphire_c-${model}"
+destdir="/cygdrive/c/work/apk/sapphire-c-${model}"
 
 echo cp "${srcdir}/${filename}" "${destdir}/"
 cp "${srcdir}/${filename}" "${destdir}/"
