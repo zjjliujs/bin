@@ -16,19 +16,20 @@ case ${model} in
 	"v1")
 		modelName=${modelNames[0]}
 		modelValue="Constants.MODEL_V1"
-		applicationId="com.rockrobo.saffire_c.android";;
+		applicationId="com.roborock.sapphire_c.android";;
 	"v2")
 		modelName=${modelNames[1]}
 		modelValue="Constants.MODEL_V2"
-		applicationId="com.rockrobo.saffire_c.android_innertest";;
+		applicationId="com.roborock.sapphire_c.android_innertest";;
 	"v3")
 		modelName=${modelNames[2]}
 		modelValue="Constants.MODEL_V3"
-		applicationId="com.rockrobo.saffire_c.android_test";;
+		applicationId="com.roborock.sapphire_c.android_test";;
 	*) 
 		echo "错误的model -- ${model}";
 		exit 11;;
 esac
+applicationIdPrefix=$(echo "${applicationId}"|awk -F. '{print $1"."$2"."$3}')
 
 #echo ${modelName}
 #echo "prepare for ${model} and ${version}"
@@ -76,10 +77,10 @@ then
 fi
 
 #检查文件的合法性
-c=$(sed -n '/^[ \t]*applicationId[ \t]\+\"com\.rockrobo.*\"/p' "$p"|wc -l)
+c=$(sed -n "/^[ \t]*applicationId[ \t]\+\"${applicationIdPrefix}.*\"/p" "$p"|wc -l)
 if [ $c -ne 1 ]
 then
-	echo "$p 应该有一行applicationID \"com.rocorobo...\",但是没有找到或者找到不止一行！"
+	echo "$p 应该有一行applicationID \"${applicationIdPrefix}...\",但是没有找到或者找到不止一行！"
 	exit 32
 fi
 
