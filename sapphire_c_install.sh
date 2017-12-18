@@ -2,14 +2,14 @@
 
 if [ $# -ne 2 ]
 then
-	echo "Usage: ruby_install <mode> <version>"
+	echo "Usage: sapphire_c_install <mode> <version>"
 	exit 11
 fi
 
 version="$2"
 model="$1"
 
-destdir="c:\\work\\apk\\ruby-${model}"
+destdir="c:\\work\\apk\\sapphire-c-${model}"
 filename="rockrobo_vacuum-${version}-0.1.${version}-release.apk"
 
 fullpath="${destdir}\\${filename}"

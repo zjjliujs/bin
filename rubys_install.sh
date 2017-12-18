@@ -2,7 +2,7 @@
 
 if [ $# -ne 2 ]
 then
-	echo "Usage: rockrobo_install <mode> <version>"
+	echo "Usage: rubys_install <mode> <version>"
 	exit 11
 fi
 
