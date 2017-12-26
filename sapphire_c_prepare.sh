@@ -16,7 +16,7 @@ case ${model} in
 	"v1")
 		modelName=${modelNames[0]}
 		modelValue="Constants.MODEL_V1"
-		applicationId="com.roborock.sapphire_c.android";;
+		applicationId="com.roborock.sapphire_c.app";;
 	"v2")
 		modelName=${modelNames[1]}
 		modelValue="Constants.MODEL_V2"
@@ -99,8 +99,8 @@ then
 fi
 
 #修改applicationId
-#sed "s/\(^[ \t]*applicationId[ \t]\+\)\"com\.rockrobo.*\"/\1 \"${applicationId}\"/" "$p" |grep applicationId
-sed -i "s/\(^[ \t]*applicationId[ \t]\+\)\"com\.rockrobo.*\"/\1\"${applicationId}\"/" "$p" 
+#sed "s/\(^[ \t]*applicationId[ \t]\+\)\"com\.roborock.*\"/\1 \"${applicationId}\"/" "$p" |grep applicationId
+sed -i "s/\(^[ \t]*applicationId[ \t]\+\)\"com\.roborock.*\"/\1\"${applicationId}\"/" "$p" 
 
 #修改versionCode
 #sed "s/\(^[ \t]*versionCode[ \t]\+\)[0-9]\+/\1${version}/" "$p"|grep versionCode
