@@ -15,15 +15,15 @@ modelNames[2]="rockrobo.sweeper.v1"
 case ${model} in 
 	"v1")
 		modelName=${modelNames[0]}
-		modelValue="Constants.RUBY_MODEL_V1"
+		modelValue="Constants.MODEL_V1"
 		applicationId="com.rockrobo.app";;
 	"v2")
 		modelName=${modelNames[1]}
-		modelValue="Constants.RUBY_MODEL_V2"
+		modelValue="Constants.MODEL_V2"
 		applicationId="com.rockrobo_test.app";;
 	"v3")
 		modelName=${modelNames[2]}
-		modelValue="Constants.RUBY_MODEL_V3"
+		modelValue="Constants.MODEL_V3"
 		applicationId="com.rockrobo_innertest.app";;
 	*) 
 		echo "错误的model -- ${model}";
