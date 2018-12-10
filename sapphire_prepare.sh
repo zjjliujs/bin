@@ -1,30 +1,30 @@
 #!/bin/bash
 if [ $# -lt 2 ] 
 then
-	echo "rubys_prepare.sh <v1|v2|v3> <versionCode>"
+	echo "sapphire_prepare.sh <v1|v2|v3> <versionCode>"
 	exit 10
 fi
 
 model="$1"
 version="$2"
 
-modelNames[0]="roborock.vacuum.s5"
-modelNames[1]="roborock.sweeper.s5v2"
-modelNames[2]="roborock.sweeper.s5v3"
+modelNames[0]="roborock.vacuum.e2"
+modelNames[1]="roborock.sweeper.e2v2"
+modelNames[2]="roborock.sweeper.e2v3"
 
 case ${model} in 
 	"v1")
 		modelName=${modelNames[0]}
 		modelValue="MiJiaConstants.MODEL_V1"
-		applicationId="com.roborock.rubys.app";;
+		applicationId="com.roborock.sapphire.android";;
 	"v2")
 		modelName=${modelNames[1]}
 		modelValue="MiJiaConstants.MODEL_V2"
-		applicationId="com.roborock.rubys.android_test";;
+		applicationId="com.roborock.sapphire.android_innertest";;
 	"v3")
 		modelName=${modelNames[2]}
 		modelValue="MiJiaConstants.MODEL_V3"
-		applicationId="com.roborock.rubys.android_inner_test";;
+		applicationId="com.roborock.sapphire.android_test";;
 	*) 
 		echo "错误的model -- ${model}";
 		exit 11;;
@@ -122,7 +122,7 @@ fi
 c=$(sed -n "/^[ \t]*android:name[ \t]*=[ \t]*\"model\"/p" "$p"|wc -l)
 if [ $c -ne 1 ]
 then
-	echo "没有找到android:name=\"model\"的行或者不止一行，请检查！"
+	echo "没有找到android:name=\"model\"的行"
 	exit 42
 fi
 
