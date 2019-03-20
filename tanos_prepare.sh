@@ -1,7 +1,7 @@
 #!/bin/bash
 if [ $# -lt 2 ] 
 then
-	echo "rubys_prepare.sh <v1|v2|v3> <versionCode>"
+	echo "tanos_prepare.sh <v1|v2|v3> <versionCode>"
 	exit 10
 fi
 

@@ -1,30 +1,30 @@
 #!/bin/bash
 if [ $# -lt 2 ] 
 then
-	echo "rubys_prepare.sh <v1|v2|v3> <versionCode>"
+	echo "ruby_plus_prepare.sh <v1|v2|v3> <versionCode>"
 	exit 10
 fi
 
 model="$1"
 version="$2"
 
-modelNames[0]="roborock.vacuum.t6"
-modelNames[1]="roborock.vacuum.t6v2"
-modelNames[2]="roborock.vacuum.t6v3"
+modelNames[0]="roborock.vacuum.r1"
+modelNames[1]="roborock.vacuum.r1v2"
+modelNames[2]="roborock.vacuum.r1v3"
 
 case ${model} in 
 	"v1")
 		modelName=${modelNames[0]}
 		modelValue="MiJiaConstants.MODEL_V1"
-		applicationId="com.roborock.tanos.app";;
+		applicationId="com.rockrobo.vaccum.r1.android_product";;
 	"v2")
 		modelName=${modelNames[1]}
 		modelValue="MiJiaConstants.MODEL_V2"
-		applicationId="com.roborock.tanos.android_test";;
+		applicationId="com.rockrobo.vaccum.r1.android";;
 	"v3")
 		modelName=${modelNames[2]}
 		modelValue="MiJiaConstants.MODEL_V3"
-		applicationId="com.roborock.tanos.android_inner_test";;
+		applicationId="com.rockrobo.vaccum.r1.android_inner_test";;
 	*) 
 		echo "错误的model -- ${model}";
 		exit 11;;
@@ -76,10 +76,10 @@ then
 fi
 
 #检查文件的合法性
-c=$(sed -n '/^[ \t]*applicationId[ \t]\+\"com\.roborock.*\"/p' "$p"|wc -l)
+c=$(sed -n '/^[ \t]*applicationId[ \t]\+\"com\.rockrobo.*\"/p' "$p"|wc -l)
 if [ $c -ne 1 ]
 then
-	echo "$p 应该有一行applicationID \"com.roborock...\",但是没有找到或者找到不止一行！"
+	echo "$p 应该有一行applicationID \"com.rockrobo...\",但是没有找到或者找到不止一行！"
 	exit 32
 fi
 
@@ -98,8 +98,8 @@ then
 fi
 
 #修改applicationId
-#sed "s/\(^[ \t]*applicationId[ \t]\+\)\"com\.roborock.*\"/\1 \"${applicationId}\"/" "$p" |grep applicationId
-sed -i "s/\(^[ \t]*applicationId[ \t]\+\)\"com\.roborock.*\"/\1\"${applicationId}\"/" "$p" 
+#sed "s/\(^[ \t]*applicationId[ \t]\+\)\"com\.rockrobo.*\"/\1 \"${applicationId}\"/" "$p" |grep applicationId
+sed -i "s/\(^[ \t]*applicationId[ \t]\+\)\"com\.rockrobo.*\"/\1\"${applicationId}\"/" "$p" 
 
 #修改versionCode
 #sed "s/\(^[ \t]*versionCode[ \t]\+\)[0-9]\+/\1${version}/" "$p"|grep versionCode
