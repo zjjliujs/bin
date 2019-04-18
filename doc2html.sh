@@ -1,5 +1,8 @@
 #/bin/bash
 
+#usage
+#find .  -name "*.docx"|xargs doc2html.sh
+
 if [ $# -lt 1 ]
 then
 	echo "Usage doc2html.sh <files...>"
