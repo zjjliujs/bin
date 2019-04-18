@@ -22,5 +22,6 @@ do
 	sed -i "s/<\/a>//g" "${of}"
 	sed -i "s/<img [^>]*>//g" "${of}"
 	sed -i "/<div title=\"footer\">/,/<\/div>/d" "${of}"
+	sed -i "/<meta name=[^>]*>/d" "${of}"
 	shift
 done
