@@ -17,5 +17,7 @@ do
 	soffice --headless --convert-to html:HTML --outdir "${ofdir}" "$f"
 	sed -i "s/<a href=[^>]*>//g" "${of}"
 	sed -i "s/<\/a>//g" "${of}"
+	sed -i "s/<img [^>]*>//g" "${of}"
+	sed -i "/<div title=\"footer\">/,/<\/div>/d" "${of}"
 	shift
 done
