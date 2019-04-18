@@ -1,6 +1,6 @@
 #/bin/bash
 
-if [ $# -le 1 ]
+if [ $# -lt 1 ]
 then
 	echo "Usage doc2html.sh <files...>"
 	exit 1
@@ -15,7 +15,7 @@ do
 	
 	echo "Converting ${f} to ${of}"
 	soffice --headless --convert-to html:HTML --outdir "${ofdir}" "$f"
-	sed -i "s/<a href=.*>//g" "${of}"
+	sed -i "s/<a href=[^>]*>//g" "${of}"
 	sed -i "s/<\/a>//g" "${of}"
 	shift
 done
