@@ -8,23 +8,23 @@ fi
 model="$1"
 version="$2"
 
-modelNames[0]="roborock.vacuum.r1"
-modelNames[1]="roborock.vacuum.r1v2"
-modelNames[2]="roborock.vacuum.r1v3"
+modelNames[0]="roborock.vacuum.t4"
+modelNames[1]="roborock.vacuum.t4v2"
+modelNames[2]="roborock.vacuum.t4v3"
 
 case ${model} in 
 	"v1")
 		modelName=${modelNames[0]}
 		modelValue="MiJiaConstants.MODEL_V1"
-		applicationId="com.rockrobo.vaccum.r1.android_product";;
+		applicationId="com.rockrobo.vaccum.t4.app";;
 	"v2")
 		modelName=${modelNames[1]}
 		modelValue="MiJiaConstants.MODEL_V2"
-		applicationId="com.rockrobo.vaccum.r1.android";;
+		applicationId="com.rockrobo.vaccum.t4.android";;
 	"v3")
 		modelName=${modelNames[2]}
 		modelValue="MiJiaConstants.MODEL_V3"
-		applicationId="com.rockrobo.vaccum.r1.android_inner_test";;
+		applicationId="com.rockrobo.vaccum.t4.android_inner_test";;
 	*) 
 		echo "错误的model -- ${model}";
 		exit 11;;
