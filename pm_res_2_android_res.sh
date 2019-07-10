@@ -1,6 +1,6 @@
 #!/bin/bash
 
-dst="/cygdrive/c/cygwin64/home/liujinsong/tanos/plugProject/rockrobo_vacuum/src/main/res"
+dst="/cygdrive/d/cygwin64/home/liujinsong/tanos/plugProject/rockrobo_vacuum/src/main/res"
 for i in *
 do 
     f=$i

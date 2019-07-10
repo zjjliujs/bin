@@ -1,6 +1,6 @@
 #!/bin/bash
 #用于合并米家SDK到石头世纪开发环境
-plugin_dir="/cygdrive/c/AndroidStudioProjects/mijia_plugin"
+plugin_dir="/cygdrive/d/AndroidStudioProjects/mijia_plugin"
 #plugin_dir=~/tmp
 
 if [ $# != 1 ]

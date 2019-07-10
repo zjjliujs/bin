@@ -9,7 +9,7 @@ fi
 version="$2"
 model="$1"
 
-destdir="/cygdrive/c/work/apk/tanos-${model}"
+destdir="/cygdrive/d/work/apk/tanos-${model}"
 filename="${destdir}/release-note-${model}-${version}"
 
 vi ${filename}

@@ -9,7 +9,7 @@ fi
 version="$2"
 model="$1"
 
-destdir="/cygdrive/c/work/apk/sapphire-c-${model}"
+destdir="/cygdrive/d/work/apk/sapphire-c-${model}"
 filename="${destdir}/release-note-${model}-${version}"
 
 vi ${filename}
