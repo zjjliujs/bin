@@ -9,13 +9,17 @@ fi
 fullpath="$1"
 
 #stop smart home
-adb shell am force-stop com.xiaomi.smarthome
+adb.exe shell am force-stop com.xiaomi.smarthome
+echo stop smarthome return code $?
 
 #start smart home
-adb shell am start com.xiaomi.smarthome/.SmartHomeMainActivity
+adb.exe shell am start com.xiaomi.smarthome/.SmartHomeMainActivity
+echo start smarthome return code $?
 
 #push apk
-adb push "${fullpath}" "/sdcard/SmartHome/plugin/debug/1.mpk"
+adb.exe push "${fullpath}" "/sdcard/SmartHome/plugin/debug/1.mpk"
+echo push apk to smarthome return code $?
 
 #install
-adb shell am broadcast -a com.xiaomi.smarthome.action.OPEN_API --es type plugin_debug --es sub_type debug_package
+adb.exe shell am broadcast -a com.xiaomi.smarthome.action.OPEN_API --es type plugin_debug --es sub_type debug_package
+echo broadcast to smarthome return code $?
