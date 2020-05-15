@@ -10,7 +10,7 @@ targetFile=$1
 
 for k in int float bool void
 do
-        sed -i "s/^[ \t]*\(${k}\) /virtual &/g" ${targetFile}
+        sed -i "s/\(^[ \t]*\)\(${k}\) /\1static \2 /g" ${targetFile}
 done
 
 echo Done！

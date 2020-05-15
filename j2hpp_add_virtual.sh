@@ -8,9 +8,9 @@ fi
 
 targetFile=$1
 
-for k in int float bool 
+for k in int float bool void char QImage QPainter
 do
-        sed -i "s/\(${k}\)\[\] /\1* /g" ${targetFile}
+        sed -i "s/\(^[ \t]*\)\(${k}\) /\1virtual \2 /g" ${targetFile}
 done
 
 echo Done！
