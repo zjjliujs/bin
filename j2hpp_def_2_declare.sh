@@ -10,7 +10,7 @@ fi
 
 targetFile=$1
 
-for k in float int "QPainter *" "QImage *" "unsigned int" char "unsigned char" bool void double
+for k in float int QPainter QImage unsigned char bool void double MapShape GLLocateRect MapPathInfoI GLPathFillRect GLSpeedBump GLForbiddenZone
 do
     echo "process $k ..."
     sed -i "/\(^${k} .\+(.*)\)[ \t]*{/{s/\(^${k} .\+(.*)\)[ \t]*{/\1;/; p; :x; N; s/\n}//; Tx; d}" ${targetFile}

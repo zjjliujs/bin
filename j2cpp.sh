@@ -105,21 +105,24 @@ then
             prefix=0
         fi
 
-        for k in int float bool void double "unsigned char"
+        ks=(int float bool void double "unsigned\\ char")
+
+        #函数增加 className::
+        for k in "${ks[@]}"
         do
             if [ ${prefix} -eq 1 ]
             then
-                #sed -i "s/\(^[ \t]*\)\(static[ \t]\+\)\(${k}\) /\1\3 ${className}::/" ${targetFile}
-                sed -i "s/\(^[ \t]*\)\(static[ \t]\+\)\(${k}\)\([ \t]\+\)\([^ \t(]\+(\)\+/\1\3 ${className}::\4/" ${targetFile}
+                sed -i "s/^\(static[ \t]\+\)\(${k}\)\([ \t]\+\)\([^ \t(]\+(\)\+/\2 ${className}::\3/" ${targetFile}
             else
                 echo "${k} ... -> ${k} ${className}:: ..."
-                sed -i "s/\(^[ \t]*\)\(${k}\)\([ \t]\+\)\([^ \t(]\+(\)\+/\1\2 ${className}::\4/" ${targetFile}
+                sed -i "s/^\(${k}\)\([ \t]\+\)\([^ \t(]\+(\)\+/\1 ${className}::\3/" ${targetFile}
             fi
             echo "${className}::${className} ..."
             sed -i "s/^${className}(/${className}::&/" ${targetFile}
         done
 
-        for k in int float bool void double
+        #修复变量定义也被加上 className::的问题
+        for k in "${ks[@]}"
         do
             echo "Fix issue ${k} ${className}::abcd = ..."
             sed -i "s/\(^[ \t]\+${k}\)[ \t]\+${className}::\([^=]\+=\)/\1 \2/" ${targetFile}
@@ -128,6 +131,22 @@ then
             echo "Fix issue ${k} ${className}::abcd; ..."
             sed -i "s/\(^[ \t]\+${k}\)[ \t]\+${className}::\([^=]\+;\)/\1 \2/" ${targetFile}
         done
+
+        ks=(${ks[@]} QPainter QImage)
+        #函数增加 className::
+        for k in "${ks[@]}"
+        do
+            if [ ${prefix} -eq 1 ]
+            then
+                sed -i "s/^\(static[ \t]\+\)\(${k} \*\)\([ \t]\+\)\(.\+(\)\+/\2 ${className}::\3/" ${targetFile}
+            else
+                echo "${k} ... -> ${k} ${className}:: ..."
+                sed -i "s/^\(${k} \*\)\([ \t]\+\)\(.\+(\)\+/\1 ${className}::\3/" ${targetFile}
+            fi
+            echo "${className}::${className} ..."
+            sed -i "s/^${className}(/${className}::&/" ${targetFile}
+        done
+
 
         echo "Fix ${className}::${className}:: ..."
         sed -i "s/${className}::${className}::/${className}::/" ${targetFile}

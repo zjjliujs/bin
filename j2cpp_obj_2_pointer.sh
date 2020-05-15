@@ -36,6 +36,11 @@ fixTypeDec MapShape shape
 fixTypeDec MapShape other
 fixTypeDec MapShape dock
 fixTypeDec MapShape newShape
+fixTypeDec MapShape virtualWall
+fixTypeDec MapShape forbidden
+fixTypeDec MapShape speedBump
+fixTypeDec MapSubRegion subRegion
+fixTypeDec GLPathFillRect shape
 fixTypeDec MapResMgrI resourceManager
 fixTypeDec MapObject mapObject
 fixTypeDec MapObject mapObj 
@@ -53,6 +58,19 @@ fixTypeDec GLVirtualWall shape
 fixTypeDec GLPolyVirtualWall shape
 fixTypeDec GLSpeedBump shape
 fixTypeDec GLMarkPoint shape
-
+fixTypeDec MapDataInfoI mapDataInfo
+fixTypeDec MapConfigI mapConfigs
+fixTypeDec MapResMgrI mapResMgr
+fixTypeDec ScrubberMapInfo info
+fixTypeDec MapPathInfoI pathInfo
+fixTypeDec MapPathInfoI path
+fixTypeDec GLLocateRect appRect
+fixTypeDec GLMarkPoint glMP
+fixTypeDec GLPointChangeBox box
 
 fixTypeCvt GLMapRect
+
+echo "Convert list<ClassName> to ClassName **"
+sed -i "s/List<\([a-zA-Z]\+\)> /\1 ** /" ${targetFile}
+
+echo "Done!"
