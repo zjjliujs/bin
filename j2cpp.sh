@@ -75,7 +75,7 @@ sed -i "s/\(\<[0-9]\+\)f\>/\1.f/g" ${targetFile}
 sed -i "s/\(\<[0-9]\+\)\.\([0-9]\+\)\.f\>/\1.\2f/g" ${targetFile}
 
 echo "Array to pointer..."
-for k in int float bool 
+for k in int float bool "unsigned\ char"
 do
    sed -i "s/\(${k}\)\[\] /\1 * /g" ${targetFile}
 done
@@ -132,7 +132,7 @@ then
             sed -i "s/\(^[ \t]\+${k}\)[ \t]\+${className}::\([^=]\+;\)/\1 \2/" ${targetFile}
         done
 
-        ks=(${ks[@]} QPainter QImage)
+        ks=("${ks[@]}" QPainter QImage UpwardRect MapObject)
         #函数增加 className::
         for k in "${ks[@]}"
         do

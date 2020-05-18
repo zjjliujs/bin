@@ -42,9 +42,10 @@ fixTypeDec MapShape speedBump
 fixTypeDec MapSubRegion subRegion
 fixTypeDec GLPathFillRect shape
 fixTypeDec MapResMgrI resourceManager
-fixTypeDec MapObject mapObject
-fixTypeDec MapObject mapObj 
 fixTypeDec UpwardRect rect
+fixTypeDec UpwardRect actualMapRect
+fixTypeDec UpwardRect getActualMapRect
+fixTypeDec UpwardRect mapRect
 fixTypeDec LineLoopObject getBorderObject
 fixTypeDec RectObject getFillObject
 fixTypeDec QImage bmp
@@ -59,7 +60,6 @@ fixTypeDec GLPolyVirtualWall shape
 fixTypeDec GLSpeedBump shape
 fixTypeDec GLMarkPoint shape
 fixTypeDec MapDataInfoI mapDataInfo
-fixTypeDec MapConfigI mapConfigs
 fixTypeDec MapResMgrI mapResMgr
 fixTypeDec ScrubberMapInfo info
 fixTypeDec MapPathInfoI pathInfo
@@ -67,8 +67,19 @@ fixTypeDec MapPathInfoI path
 fixTypeDec GLLocateRect appRect
 fixTypeDec GLMarkPoint glMP
 fixTypeDec GLPointChangeBox box
+fixTypeDec MapBitmapInfoI mbInfo
+fixTypeDec BaseMapDataInfo dataInfo
+fixTypeDec MapObject mapObject
+fixTypeDec MapObject mapObj 
+fixTypeDec MapObject getNdcMapObject
+fixTypeDec MapObject ndcMapObject
+fixTypeDec MapConfigI getMapConfigs
+fixTypeDec MapConfigI mapConfig
+fixTypeDec MapConfigI mapConfigs
+fixTypeDec BaseMapBitmapInfo info
 
 fixTypeCvt GLMapRect
+fixTypeCvt ScrubberMapDataInfo
 
 echo "Convert list<ClassName> to ClassName **"
 sed -i "s/List<\([a-zA-Z]\+\)> /\1 ** /" ${targetFile}

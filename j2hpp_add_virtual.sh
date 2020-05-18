@@ -8,7 +8,7 @@ fi
 
 targetFile=$1
 
-for k in int float bool void char QImage QPainter
+for k in int float bool void char QImage QPainter UpwardRect MapObject "unsigned\ char"
 do
         sed -i "s/\(^[ \t]*\)\(${k}\) /\1virtual \2 /g" ${targetFile}
 done
