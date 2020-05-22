@@ -12,24 +12,26 @@ targetFile=$1
 echo "Remove Math. ..."
 sed -i "s/\<Math\.//g" ${targetFile}
 
-for k in "@Override" 
+for k in "@Override"
 do
     echo "Remove ${k} ..."
     sed -i "/${k}/d" ${targetFile}
 done
 
-for k in 'transient' 'abstract'
+for k in 'transient' 'abstract' 'final'
 do
     echo "Remove ${k} ..."
     sed -i "s/\<${k}\>//" ${targetFile}
 done
+echo "Remove @NonNull ..."
+sed -i "s/@NonNull //" ${targetFile}
 
 for k in public protected private
 do
     echo "Remove ${k} synchronized ..."
-    sed -i "s/${k}[^:]\+synchronized //" ${targetFile}
+    sed -i "s/\(^[ \t]*\)${k}[^:]\+synchronized /\1/" ${targetFile}
     echo "Remove ${k} ..."
-    sed -i "s/${k}[ \t]\+//" ${targetFile}
+    sed -i "s/\(^[ \t]*\)${k}[ \t]\+/\1/" ${targetFile}
 done
 
 function keyConv() {
@@ -52,6 +54,12 @@ keyConv Paint "QPainter *"
 keyConv Bitmap "QImage *"
 keyConv String "char *"
 keyConv byte "unsigned char"
+keyConv MapShape\.Type ShapeType
+keyConv GLMarkPoint\.Type MarkPointType
+keyConv GLPointChangeBox\.Type PointChangeType
+
+echo "TextureHelper. to textureHelper->"
+sed -i "s/\<TextureHelper\./textureHelper->/g" ${targetFile}
 
 
 function staticCallConv() {
@@ -74,9 +82,10 @@ sed -i "s/\(\<[0-9]\+\)f\>/\1.f/g" ${targetFile}
 #把0.5.f改回来
 sed -i "s/\(\<[0-9]\+\)\.\([0-9]\+\)\.f\>/\1.\2f/g" ${targetFile}
 
-echo "Array to pointer..."
-for k in int float bool "unsigned\ char"
+ks=(int float bool "unsigned\ char" "MapShape")
+for k in ${ks[@]}
 do
+   echo "${k}[] --> ${k} *"
    sed -i "s/\(${k}\)\[\] /\1 * /g" ${targetFile}
 done
 
@@ -132,7 +141,11 @@ then
             sed -i "s/\(^[ \t]\+${k}\)[ \t]\+${className}::\([^=]\+;\)/\1 \2/" ${targetFile}
         done
 
-        ks=("${ks[@]}" QPainter QImage UpwardRect MapObject)
+        ks=("${ks[@]}" QPainter QImage UpwardRect MapObject MapShape MapInfoI)
+        ks=("${ks[@]}" PointObject MapLoadingAnim MapConfigI RectTextureObject)
+        ks=("${ks[@]}" RobotHaloObject)
+        ks=("${ks[@]}" ShapeInfoObject)
+        ks=("${ks[@]}" MapResMgrI)
         #函数增加 className::
         for k in "${ks[@]}"
         do
@@ -140,11 +153,18 @@ then
             then
                 sed -i "s/^\(static[ \t]\+\)\(${k} \*\)\([ \t]\+\)\(.\+(\)\+/\2 ${className}::\3/" ${targetFile}
             else
-                echo "${k} ... -> ${k} ${className}:: ..."
+                echo "${k} * ... -> ${k} ${className}:: ..."
                 sed -i "s/^\(${k} \*\)\([ \t]\+\)\(.\+(\)\+/\1 ${className}::\3/" ${targetFile}
             fi
             echo "${className}::${className} ..."
             sed -i "s/^${className}(/${className}::&/" ${targetFile}
+        done
+
+        ks=(MapShape)
+        for k in "${ks[@]}"
+        do
+            echo "${k} ... -> ${k} ** ${className}:: ..."
+            sed -i "s/^\(${k} \*\*\)\([ \t]\+\)\(.\+(\)\+/\1 ${className}::\3/" ${targetFile}
         done
 
 

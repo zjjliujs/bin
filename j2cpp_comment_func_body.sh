@@ -22,7 +22,10 @@ fi
 
 targetFile=$1
 
-ks=(int float "unsigned\\ char" QImage void QPainter bool MapPathInfoI GLLocateRect)
+ks=(int float "unsigned\\ char" QImage void QPainter bool MapPathInfoI GLLocateRect MapShape MapInfoI)
+ks=(${ks[@]} ScaleRulerObject)
+ks=(${ks[@]} ShapeInfoObject)
+ks=(${ks[@]} PointObject)
 for i in "${ks[@]}"
 do 
     commentFuncBody "$i"

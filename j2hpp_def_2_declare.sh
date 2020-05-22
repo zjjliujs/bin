@@ -14,7 +14,14 @@ ks=(float int QPainter QImage unsigned char bool void double)
 ks=(${ks[@]} MapShape GLLocateRect MapPathInfoI GLPathFillRect)
 ks=(${ks[@]} GLSpeedBump GLForbiddenZone MapObject MapConfigI)
 ks=(${ks[@]} UpwardRect)
-
+ks=(${ks[@]} MapInfoI)
+ks=(${ks[@]} PointObject)
+ks=(${ks[@]} RobotHaloObject)
+ks=(${ks[@]} RectTextureObject)
+ks=(${ks[@]} MapLoadingAnim)
+ks=(${ks[@]} ScaleRulerObject)
+ks=(${ks[@]} ShapeInfoObject)
+ks=(${ks[@]} MapResMgrI)
 
 for k in ${ks[@]}
 do

@@ -6,10 +6,10 @@ h
 $b
 N
 /^\(.*\)\n\1$/ {
-# The two lines are identical.  Undo the effect of
-# the n command.
+    # The two lines are identical.  Undo the effect of
+    # the n command.
     g
-        bb
+    bb
 }
 
 # If the N command had added the last line, print and exit
@@ -19,4 +19,3 @@ $b
 # back working on the second.
 P
 D
-

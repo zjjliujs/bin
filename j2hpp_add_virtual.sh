@@ -8,9 +8,22 @@ fi
 
 targetFile=$1
 
-for k in int float bool void char QImage QPainter UpwardRect MapObject "unsigned\ char"
+ks=(int float bool void char QImage QPainter UpwardRect MapObject "unsigned\ char" MapShape)
+ks=("${ks[@]}" MapInfoI)
+ks=("${ks[@]}" PointObject)
+ks=("${ks[@]}" RobotHaloObject)
+ks=("${ks[@]}" MapLoadingAnim)
+ks=("${ks[@]}" MapConfigI)
+ks=("${ks[@]}" GLLocateRect)
+ks=("${ks[@]}" MapPathInfoI)
+ks=("${ks[@]}" MapResMgrI)
+ks=("${ks[@]}" MapDataInfoI)
+ks=("${ks[@]}" MapType)
+
+for k in "${ks[@]}"
 do
-        sed -i "s/\(^[ \t]*\)\(${k}\) /\1virtual \2 /g" ${targetFile}
+    echo "Add virtural for ${k} function..."
+    sed -i "s/\(^[ \t]*\)\(${k}\) /\1virtual \2 /g" ${targetFile}
 done
 
 echo Done！
