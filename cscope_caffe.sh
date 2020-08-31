@@ -1,3 +1,3 @@
 #!/bin/bash
 
-cscope_build.sh src/caffe include/caffe tools
+cscope_build.sh src/caffe include/caffe tools examples
