@@ -16,5 +16,6 @@ echo "Run docker with image: ${image}${tag}"
 
 docker run -i -t \
 	-v ~/docker/ubuntu-18.04:/mnt/download \
+	-v ~/caffe/caffe-cpu:/mnt/caffe-cpu \
 	${image}${tag}
 
